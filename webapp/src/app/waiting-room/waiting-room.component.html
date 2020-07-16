@@ -1,0 +1,36 @@
+<div class="vertical-center">
+  <div class="middle">
+    <img src="assets/logo.png" class="logo">
+  </div>
+  <div class="middle">
+    <div id="consent-ui" class="top-down consent" *ngIf="showConsent">
+      <div class="middle">
+        <div id="language-label" class="language-label"></div>
+        <select id="language-selector" class="language-selector">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+      <div id="consent-message" class="consent">
+        Consent placeholder.
+      </div>
+      <div class="middle">
+        <button id="consent-ack" (click)="consentClicked()">Agree</button>
+      </div>
+    </div>
+    <div id="waiting-room-ui" class="top-down" *ngIf="showWaitingRoom">
+      <div class="middle">
+        <img src="assets/loading.gif" class="loading-image" id="icon-please-wait">
+        <img src="assets/failed.gif" class="loading-image hidden" id="icon-exclamation">
+      </div>
+      <div class="middle">
+        <div class="welcome-message" id="welcome-message">Welcome</div>
+      </div>
+      <div class="middle">
+        <p class="hidden patient-message-error" id="error-no-encounter">No encounter was selected</p>
+        <p class="patient-message" id="message-please-wait">Your appointment will begin soon.<br />Thank you for your
+          patience.</p>
+      </div>
+    </div>
+  </div>
+</div>

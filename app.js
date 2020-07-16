@@ -25,6 +25,7 @@ const session = require('cookie-session');
 
 const app = express();
 app.use(express.static('static'));
+app.use(express.static('webapp/dist/webapp'));
 app.use('/fhirclient', express.static('node_modules/fhirclient/build/'));
 app.use('/jquery', express.static('node_modules/jquery/dist/'));
 app.use(express.urlencoded({extended: false}));
@@ -61,6 +62,7 @@ app.get('/hangouts/:encounterId', (request, response) => {
 
 app.post('/hangouts', (request, response) => {
 	const encounterId = request.body.encounterId;
+	console.log(request.body);
 	const key = datastore.key(['Encounter', encounterId]);
 	datastore.get(key).then(entity => {
 		if (entity) {
@@ -96,6 +98,10 @@ app.get('/logout', (request, response) => {
 
 app.get('/settings', (request, response) => {
   response.send({'fhirClientId': settings.fhirClientId});
+});
+
+app.all('*', function (req, res) {
+	res.status(200).sendFile(`/`, {root: 'webapp/dist/webapp'});
 });
 
 app.listen(process.env.PORT || 8080);

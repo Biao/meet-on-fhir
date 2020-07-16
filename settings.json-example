@@ -2,9 +2,9 @@
   "calendar": "primary",
   "sessionCookieSecret": "secret key used to encrypt the session cookie",
   "oauth2": {
-    "clientId": "an oauth2 client ID registered with Google Cloud",
-    "clientSecret": "the client secret for the client ID",
-    "redirectUri": "https://your-url/authenticate"
+    "clientId": "132195357717-f4nrvnqhp4npu0eimk2s0ofi4u19u63g.apps.googleusercontent.com",
+    "clientSecret": "panreipIe0PFURf6aCFga0Bj",
+    "redirectUri": "https://www.bshe-chc-test.uc.r.appspot.com/authenticate"
   },
   "fhirClientId": "a SMART on FHIR client ID registered with the EHR",
   "debugLogging": false
