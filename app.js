@@ -100,8 +100,12 @@ app.get('/settings', (request, response) => {
   response.send({'fhirClientId': settings.fhirClientId});
 });
 
+app.get('/es', function (req, res) {
+	res.status(200).sendFile(`/`, {root: 'webapp/dist/webapp/es'});
+});
+
 app.all('*', function (req, res) {
-	res.status(200).sendFile(`/`, {root: 'webapp/dist/webapp'});
+	res.status(200).sendFile(`/`, {root: 'webapp/dist/webapp/en-US'});
 });
 
 app.listen(process.env.PORT || 8080);

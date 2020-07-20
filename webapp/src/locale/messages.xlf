@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="ed70be6a9bd14f8c07ba0ee8f27762d0752e02f9" datatype="html">
+        <source>Select your language:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">label for language selector</note>
+      </trans-unit>
+      <trans-unit id="50630e6f00c23cbc10d482e07a7e97f3457edc2d" datatype="html">
+        <source>Before you
+          enter the waiting room, please review the following information about televisits, via MyChart:
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">The title of consent message showing to patient before entering telehealth waiting room</note>
+      </trans-unit>
+      <trans-unit id="576adb88eba95ec3db208a02ddc2f8ae3ae9c139" datatype="html">
+        <source>Please take a moment to see that you are in a private location where you cannot be unintentionally
+            overheard. If you cannot be in a private location, you can decide at any time whether to continue this visit
+            or to end it.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="55152dd5e54e6868c1d265225dc19f94383465f6" datatype="html">
+        <source>You understand there are potential risks to this technology, including interruptions, unauthorized
+            access
+            and technical difficulties. You or your provider may need to discontinue the televisit at any time.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d112f470078892ea123bb93e54353a82f4deb5d7" datatype="html">
+        <source>By continuing to participate in this telehealth visit, you are providing verbal consent for
+            treatment.
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="71cb0d0150ef35b1a1280c45737476666ad306a8" datatype="html">
+        <source>Continue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description"> text to show on a button</note>
+        <note priority="1" from="meaning">next step </note>
+      </trans-unit>
+      <trans-unit id="65cc4ab3b4c438e07c89be2b677d08369fb62da2" datatype="html">
+        <source>Welcome</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="description">welcome message.</note>
+      </trans-unit>
+      <trans-unit id="6f9b8110c680d30cba980e12f7225f82c4db1e5c" datatype="html">
+        <source>Your appointment will begin
+          soon.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Thank you for your
+          patience.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/waiting-room/waiting-room.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description">message showing to user in waiting room</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

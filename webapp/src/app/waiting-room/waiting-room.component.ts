@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import * as FHIR from 'fhirclient';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Client from 'fhirclient/lib/Client';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { interval } from 'rxjs';
 import { switchMap, switchMapTo, catchError, first, mergeMap } from 'rxjs/operators';
+import { MatSelectChange } from '@angular/material/select';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-waiting-room',
@@ -15,16 +18,31 @@ export class WaitingRoomComponent implements OnInit {
 
   showWaitingRoom = false;
   showConsent = false;
+  locale: string;
 
   private client: Client;
 
-  constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private http: HttpClient,
+    @Inject(DOCUMENT) private document: Document) {
+    this.locale = this.document.location.href.indexOf('/es') !== -1 ? 'es' : 'en';
+  }
 
   consentClicked(): void {
     this.showWaitingRoom = true;
     this.showConsent = false;
     console.log(this.client.encounter.id);
     this.waitForJoin(this.client.encounter.id);
+  }
+
+  updateLocale(change: MatSelectChange): void {
+    // Angular i18n requires a complete reload. Each locale is packed in a separate app.
+    if (change.value === 'en') {
+      this.document.location.href = '/en-US';
+    } else if (change.value === 'es') {
+      this.document.location.href = '/es';
+    }
   }
 
   private showError(message: string): void {
@@ -39,7 +57,7 @@ export class WaitingRoomComponent implements OnInit {
     };
     this.http.post('/hangouts', data.toString(), options).subscribe((res) => {
       if (res['url']) {
-        window.location.replace(res['url']);
+        window.location.replace(res['url'] + `?hl=${this.locale}`);
       }
     }, (error) => { this.showError('An unexpected error occurred in the application'); });
   }
@@ -49,7 +67,7 @@ export class WaitingRoomComponent implements OnInit {
       this.http.get('/hangouts/' + encounterId).subscribe(data => {
         if (data['url']) {
           window.clearInterval(timerId);
-          window.location.replace(data['url']);
+          window.location.replace(data['url'] + `?hl=${this.locale}`);
           return;
         }
       }, (error) => { this.showError('An unexpected error occurred in the application'); });
