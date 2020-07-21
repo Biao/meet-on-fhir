@@ -15,3 +15,22 @@
 
 # Node.js dependencies:
 node_modules/
+
+# TODO: figure out a way to only include dist folder.
+# Exclude all othe folders except for dist/
+webapp/e2e/
+webapp/src/
+webapp/node_modules/
+
+#Exclude angular related config files
+.browserslistrc
+.editorconfig
+angular.json
+karma.conf.js
+tsconfig.app.json
+tsconfig.base.json
+tsconfig.json
+tsconfig.spec.json
+tslint.json
+webapp/package.json
+webapp/package-lock.json

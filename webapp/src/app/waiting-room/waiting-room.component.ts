@@ -57,7 +57,7 @@ export class WaitingRoomComponent implements OnInit {
     };
     this.http.post('/hangouts', data.toString(), options).subscribe((res) => {
       if (res['url']) {
-        window.location.replace(res['url'] + `?hl=${this.locale}`);
+        window.location.replace(res['url']);
       }
     }, (error) => { this.showError('An unexpected error occurred in the application'); });
   }
