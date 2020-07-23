@@ -10,7 +10,7 @@ export class SettingsService {
   private settingFetcher: Observable<any>;
 
   constructor(private http: HttpClient) {
-    this.settingFetcher = this.http.get('/settings').pipe(
+    this.settingFetcher = this.http.get('/api/settings').pipe(
       shareReplay(1),
     );
   }

@@ -7,5 +7,6 @@
     "redirectUri": "https://www.bshe-chc-test.uc.r.appspot.com/authenticate"
   },
   "fhirClientId": "a SMART on FHIR client ID registered with the EHR",
+  "showChat": true,
   "debugLogging": false
 }

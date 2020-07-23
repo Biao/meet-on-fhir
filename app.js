@@ -48,7 +48,7 @@ function debugLog(message) {
 	}
 }
 
-app.get('/hangouts/:encounterId', (request, response) => {
+app.get('/api/hangouts/:encounterId', (request, response) => {
 	const key = datastore.key(['Encounter', request.params.encounterId]);
 	datastore.get(key).then(entity => {
 		if (entity) {
@@ -60,7 +60,7 @@ app.get('/hangouts/:encounterId', (request, response) => {
 	}).catch(error(response));
 });
 
-app.post('/hangouts', (request, response) => {
+app.post('/api/hangouts', (request, response) => {
 	const encounterId = request.body.encounterId;
 	console.log(request.body);
 	const key = datastore.key(['Encounter', encounterId]);
@@ -96,7 +96,7 @@ app.get('/logout', (request, response) => {
 	user.logout(request, response);
 });
 
-app.get('/settings', (request, response) => {
+app.get('/api/settings', (request, response) => {
   response.send({'fhirClientId': settings.fhirClientId, 'showChat': settings.showChat});
 });
 

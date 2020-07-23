@@ -70,7 +70,7 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
     const options = {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
     };
-    this.http.post('/hangouts', data.toString(), options).subscribe((res) => {
+    this.http.post('/api/hangouts', data.toString(), options).subscribe((res) => {
       if (res['url']) {
         window.location.replace(res['url']);
       }
@@ -79,7 +79,7 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
 
   private waitForJoin(encounterId: string): void {
     const timerId = window.setInterval(() => {
-      this.http.get('/hangouts/' + encounterId).subscribe(data => {
+      this.http.get('/api/hangouts/' + encounterId).subscribe(data => {
         if (data['url']) {
           this.patientCanJoin.next(true);
           window.clearInterval(timerId);
