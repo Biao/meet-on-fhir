@@ -97,7 +97,7 @@ app.get('/logout', (request, response) => {
 });
 
 app.get('/settings', (request, response) => {
-  response.send({'fhirClientId': settings.fhirClientId});
+  response.send({'fhirClientId': settings.fhirClientId, 'showChat': settings.showChat});
 });
 
 app.get('/es', function (req, res) {

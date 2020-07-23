@@ -1,8 +1,11 @@
-<div class="vertical-center">
-  <div class="middle">
+<div class="container">
+  <mat-toolbar>
     <img src="assets/logo.png" class="logo">
-  </div>
-  <div class="middle">
+    <div class="spacer"></div>
+    <span>Waiting Room</span>
+  </mat-toolbar>
+
+  <div class="content middle">
     <div id="consent-ui" class="top-down consent" *ngIf="showConsent">
       <div class="middle">
         <mat-form-field appearance="fill">
@@ -13,7 +16,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div id="consent-message" class="consent">
+      <mat-card id="consent-message" class="consent">
         <h1 i18n="The title of consent message showing to patient before entering telehealth waiting room">Before you
           enter the waiting room, please review the following information about televisits, via MyChart:
         </h1>
@@ -28,10 +31,10 @@
             treatment.
           </li>
         </ol>
-      </div>
-      <div class="middle">
-        <button i18n="next step | text to show on a button" (click)="consentClicked()">Continue</button>
-      </div>
+        <div class="middle">
+          <button i18n="next step | text to show on a button" (click)="consentClicked()">Continue</button>
+        </div>
+      </mat-card>
     </div>
     <div id="waiting-room-ui" class="top-down" *ngIf="showWaitingRoom">
       <div class="middle">
@@ -39,14 +42,39 @@
         <img src="assets/failed.gif" class="loading-image hidden" id="icon-exclamation">
       </div>
       <div class="middle">
-        <div class="welcome-message" i18n="welcome message.">Welcome</div>
-      </div>
-      <div class="middle">
-        <p class="hidden patient-message-error" id="error-no-encounter">No encounter was selected</p>
-        <p class="patient-message" i18n="message showing to user in waiting room">Your appointment will begin
-          soon.<br />Thank you for your
-          patience.</p>
+        <mat-card class="middle appointment-card">
+          <div class="top-down">
+            <h2 class="middle">Appointment</h2>
+            <div class="practioner-info middle">{{practionerName | async}} | Primary Practioner |
+              Telehealth</div>
+            <div class="top-down">
+              <div class="middle">Patient: {{patientName | async}}</div>
+              <div class="middle">Date: {{startTime | async | date: 'fullDate'}}</div>
+              <div class="middle">Time: {{startTime | async | date: 'longTime'}} ({{duration | async}} minutes)</div>
+            </div>
+          </div>
+        </mat-card>
+        <mat-card class="middle status-card">
+          <div class="top-down">
+            <h2 class="middle">Status</h2>
+            <ng-container *ngIf="patientCanJoin | async; else notReadyStatus">
+              <div class="middle">{{practionerName | async}} is ready for you!</div>
+              <button (click)="joinMeet()">Join Appointment</button>
+            </ng-container>
+            <ng-template #notReadyStatus>
+              <p class="middle" i18n="message showing to user in waiting room">Your appointment will begin
+                soon. Thank you for your patience.</p>
+              <p class="middle">When the doctor is ready to see you. You will confirm that your microphone
+                and cameras are working properly.</p>
+            </ng-template>
+          </div>
+        </mat-card>
       </div>
     </div>
   </div>
 </div>
+<ng-container *ngIf="showChat | async">
+  <df-messenger intent="WELCOME" chat-title="Test-Telehealth" agent-id="f275bafe-5b1b-4a9e-bc0d-161ba1199be7"
+    language-code="en">
+  </df-messenger>
+</ng-container>
