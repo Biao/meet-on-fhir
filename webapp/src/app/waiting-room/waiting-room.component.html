@@ -38,10 +38,6 @@
     </div>
     <div id="waiting-room-ui" class="top-down" *ngIf="showWaitingRoom">
       <div class="middle">
-        <img src="assets/loading.gif" class="loading-image" id="icon-please-wait">
-        <img src="assets/failed.gif" class="loading-image hidden" id="icon-exclamation">
-      </div>
-      <div class="middle">
         <mat-card class="middle appointment-card">
           <div class="top-down">
             <h2 class="middle">Appointment</h2>
@@ -57,6 +53,10 @@
         <mat-card class="middle status-card">
           <div class="top-down">
             <h2 class="middle">Status</h2>
+            <div class="middle">
+              <img src="assets/loading.gif" class="loading-image" id="icon-please-wait">
+              <img src="assets/failed.gif" class="loading-image hidden" id="icon-exclamation">
+            </div>
             <ng-container *ngIf="patientCanJoin | async; else notReadyStatus">
               <div class="middle">{{practionerName | async}} is ready for you!</div>
               <button (click)="joinMeet()">Join Appointment</button>
